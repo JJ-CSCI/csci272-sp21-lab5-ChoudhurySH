@@ -5,7 +5,53 @@
 //------------------------------
 
 // Write the assignment code here
+class Real{
+  double real;
+  public:
+  Real(double re){
+    real = re;
+  }
 
+  double GetReal()const{
+    return real;
+  }
+
+  Real operator *(double value){
+    return real * value;
+  }
+};
+
+class Complex:public Real{
+  double imaginary;
+  public:
+  Complex(double re, double img) : Real(re){
+    imaginary = img;
+  }
+
+  double GetImaginary()const{
+    return imaginary;
+  }
+
+  Complex operator*(double value){
+    return Complex(GetReal()* value, imaginary *value);
+  }
+};
+
+class Surreal:public Complex{
+  double surreal;
+  public:
+  Surreal(double re, double img, double sreal):Complex(re, img){
+    surreal=sreal;
+  }
+
+  double GetSurreal()const{
+    return surreal;
+  }
+
+  Surreal operator*(double value){
+    return Surreal(GetReal()*value, GetImaginary()*value, surreal*value);
+  }
+};
 
 //------------------------------
 //   DO NOT MODIFY TEST CASES
